@@ -1,0 +1,29 @@
+// get the save button element
+const saveBtn = document.getElementById("saveBtn");
+
+// add a click event listener to the save button
+saveBtn.addEventListener("click", function() {
+
+  // get the user input values
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  // retrieve the existing user data from local storage
+  let userData = JSON.parse(localStorage.getItem("userData"));
+
+  // if there is no existing data, create a new array to store the user data
+  if (!userData) {
+    userData = [];
+  }
+
+  // add the new user data to the array
+  userData.push({
+    name: name,
+    email: email,
+    phone: phone
+  });
+
+  // store the updated user data in local storage
+  localStorage.setItem("userData", JSON.stringify(userData));
+});
